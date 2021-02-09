@@ -2,7 +2,7 @@ require "/Users/michaellyons/Documents/alpacaclasswork/w3d5_poly_tree_nodes/lib/
 
 class KnightPathFinder
 
-    attr_reader :considered_positions, :current_pos, :starting_pos, :start_node
+    attr_reader :considered_positions, :current_pos, :starting_pos, :root_node
 
     MOVES = [
         [2, 1],
@@ -26,26 +26,9 @@ class KnightPathFinder
             y += el[1]
             if x >= 0 && y >= 0 && x <= 7 && y <= 7
                 vm << [x,y] 
-            else
-                raise "you dun fucked up"
             end
         end
-
-        poly_nodes = vm.each_with_index do |pos_pos, i|
-                        vm[i] = PolyTreeNode.new(pos_pos)
-                     end
-        # return poly_nodes.each do |node|
-        #         if @start_node.value == @starting_pos && @start_node.parent.nil?
-        #             node.parent=(@start_node)
-        #         else 
-        #             node.parent=(@current_pos)
-        #         end
-        #        end
-        for i in (0...poly_nodes.length-1)
-            poly_nodes[i].parent = @current_node
-        end
-     # valid moves array should contain all possilbe moves from orgin position
-     # if pos was visited, its not a valid move.
+        vm
     end
 
 
@@ -59,8 +42,9 @@ class KnightPathFinder
         #starting position is going to be an x,y coordinate on a chessboard
         @starting_pos = starting_pos
         @current_pos = starting_pos
-        @start_node = PolyTreeNode.new(starting_pos)
+        @root_node = PolyTreeNode.new(starting_pos)
         @current_node = start_node
+        build_move_tree
     end
 
     
@@ -68,21 +52,23 @@ class KnightPathFinder
           test = KnightPathFinder.valid_moves(pos)
           test.reject() {|el| @considered_positions.include?(el)} #[elements that are not in considered_positions]
           test.select() {|el| KnightPathFinder.valid_moves(@starting_pos).include?(el)} #[elements that are not same as the @starting_positions ]
-          if test.include?(@current_pos)
-                @considered_positions << pos
-                @current_pos = pos
-                p "piece moved to #{pos}"
-          end
+
     end
 
-    def build_move_tree(pos)   # [0,0] - [4,5]  #=> [0,0] [1,2] [3,3] [4, 5]
-                                                #=>       [2,1]
-        q = []
-        new_pos = new_move_position(pos)
-        q.push @starting_pos
-        until q.empty?
-            current_piece = q[0]
+    def build_move_tree
+        root_node = PolyTreeNode.new(starting_pos)
 
+   
+        nodes = [root_node]
+        until nodes.empty?
+            current_node = nodes.shift
+
+            current_pos = current_node.value
+            new_move_positions(current_pos).each do |next_pos|
+                next_node = PolyTreeNode.new(next_pos)
+                current_node.add_child(next_node)
+                nodes << next_node
+            end
         end
     end
 
@@ -99,4 +85,4 @@ puts "-" * 80
 puts
 
 # kpf.new_move_position([1,2])
-KnightPathFinder.valid_moves([3,3])
+p 
