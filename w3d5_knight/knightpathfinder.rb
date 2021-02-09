@@ -23,7 +23,7 @@ class KnightPathFinder
             y += el[1]
             vm << [x,y] if x >= 0 && y >= 0 && x <= 7 && y <= 7
         end
-        p(vm)
+      return vm
      # valid moves array should contain all possilbe moves from orgin position
      # if pos was visited, its not a valid move.
     end
@@ -44,12 +44,17 @@ class KnightPathFinder
     
     def new_move_position(pos)
           test = KnightPathFinder.valid_moves(pos)
-          test.reject() {|el| @considered_positions.include?(el)}
-          test.select() {|el| KnightPathFinder.valid_moves(@starting_pos).include?(el)}
+          test.reject() {|el| @considered_positions.include?(el)} #[elements that are not in considered_positions]
+          test.select() {|el| KnightPathFinder.valid_moves(@starting_pos).include?(el)} #[elements that are not same as the @starting_positions ]
           #if KnightPathFinder.valid_moves(pos) != considered_positions && KnightPathFinder.valid_moves(@current_pos).include?(pos) 
-            @considered_positions << pos
-            @current_pos = pos
-          end
+           # @considered_positions << pos
+           # @current_pos = pos
+          #end
+          p test
+          puts
+          p @considered_positions
+          puts
+          p @current_pos
         
     end
 
