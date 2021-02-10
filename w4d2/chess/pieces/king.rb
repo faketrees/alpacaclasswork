@@ -13,8 +13,10 @@ class King < Piece
     [0, -1]
   ]
 
-  def initialize
-    
-  end
+    def symbol
+        ♔
+        ♚
+    end
+
   
 end

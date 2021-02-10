@@ -14,7 +14,8 @@ class Queen < Piece
   ]
 
   def symbol
-
+    ♛
+    ♕
   end
 
   private 

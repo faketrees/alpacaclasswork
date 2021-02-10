@@ -10,7 +10,8 @@ class Rook < Piece
   ]
 
   def symbol
-
+    "♖"
+    "♜"
   end
 
   private 

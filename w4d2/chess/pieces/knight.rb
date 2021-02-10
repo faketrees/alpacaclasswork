@@ -14,6 +14,11 @@ class Knight < Piece
         [-1, -2],
     ]
 
+
+    def symbol
+        ♘
+        ♞
+    end
     def initialize(color, board, pos)
         
 

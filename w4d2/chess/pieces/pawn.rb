@@ -6,8 +6,9 @@ class Pawn < Piece
     [1, 0],
   ]
 
-  def initialize
-    
+  def symbol
+    ♙
+    ♟
   end
   
 end
