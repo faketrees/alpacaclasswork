@@ -4,7 +4,7 @@ require "./pieces/nullpiece"
 
 class Board
 
-  attr_reader :grid
+  attr_accessor :grid
 
   #change 'piece' to respective pieces once we write each class
   STARTING_PIECES_WHITE = [
@@ -66,14 +66,14 @@ class Board
 
   def move_piece(start_pos, end_pos) #will need to add color back eventually?
     
-    if @grid[start_pos[0]][start_pos[1]] != NullPiece.instance && valid_position?([start_pos[0]][start_pos[1]])
-      piece = @grid[start_pos]
+    if self[start_pos] != NullPiece.instance && valid_position?(end_pos)
+      piece = self[start_pos]
     else
       raise "There's no piece here. It must be a ghost. Spooky. "
     end
-    if valid_position?(end_pos) 
-      @grid[end_pos], @grid[start_pos] = @grid[start_pos], @grid[end_pos]
-      # @grid[start_pos] = NullPiece.instance     
+    if valid_position?(end_pos)   
+        self[end_pos] = piece 
+        self[start_pos] = NullPiece.instance
     else
       raise "You're trying to cheat. *flips table and board"
     end
@@ -135,11 +135,12 @@ class Board
 end
 
 
-a = Board.new
-p a
+# a = Board.new
+# p a
 
-puts
-puts "-" * 80
-puts
+# puts
+# puts "-" * 80
+# puts
 
-a.move_piece([6,0], [5,0])
+# a.move_piece([6,0], [5,0])
+# print a[[6, 0]]
