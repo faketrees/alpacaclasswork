@@ -5,35 +5,32 @@ class Board
   attr_reader :grid
 
   STARTING_PIECES = [
-    wrook1 = Rook.new(white, self, [0,0]),
-    wrook2 = Rook.new(white, self, [0,7]),
-    wbishop1 = Bishop.new(white, self, [0,1]),
-    wbishop2 = Bishop.new(white, self, [0,6]),
-    wknight1 = Knight.new(white, self, [0,2]),
-    wknight2 = Knight.new(white, self, [0,5]),
-    wqueen = Queen.new(white, self, [0,3]),
-    wking = King.new(white, self, [0,4]),
-    brook1 = Rook.new(black, self, [7,0]),
-    brook2 = Rook.new(black, self, [7,7]),
-    bbishop1 = Bishop.new(black, self, [7,1]),
-    bbishop2 = Bishop.new(black, self, [7,6]),
-    bknight1 = Knight.new(black, self, [7,2]),
-    bknight2 = Knight.new(black, self, [7,5]),
-    bqueen = Queen.new(black, self, [7,3]),
-    bking = King.new(black, self, [7,4]),
+    wrook1 = Piece.new("white", self, [0,0]),
+    wrook2 = Piece.new("white", self, [0,7]),
+    wbishop1 = Piece.new("white", self, [0,1]),
+    wbishop2 = Piece.new("white", self, [0,6]),
+    wknight1 = Piece.new("white", self, [0,2]),
+    wknight2 = Piece.new("white", self, [0,5]),
+    wqueen = Piece.new("white", self, [0,3]),
+    wking = Piece.new("white", self, [0,4]),
+    brook1 = Piece.new("black", self, [7,0]),
+    brook2 = Piece.new("black", self, [7,7]),
+    bbishop1 = Piece.new("black", self, [7,1]),
+    bbishop2 = Piece.new("black", self, [7,6]),
+    bknight1 = Piece.new("black", self, [7,2]),
+    bknight2 = Piece.new("black", self, [7,5]),
+    bqueen = Piece.new("black", self, [7,3]),
+    bking = Piece.new("black", self, [7,4]),
   ]
 
   def initialize
     @grid = Array.new(8) { Array.new(8) { NullPiece.new } }
-    populate
     #fill in the top 2 rows and bottom two rows with piece instances. (filler pieces, they don't have to do too much)
   end
 
   def populate
-    @grid.each do |rows|
-      rows.each do |spot|
-
-      end
+    STARTING_PIECES.each do |piece|
+      grid[*piece.pos] = piece
     end
   end
 

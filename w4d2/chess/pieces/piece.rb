@@ -1,9 +1,11 @@
 class Piece
 
-  attr_writer :pos
+  attr_accessor :pos
 
   def initialize(color, board, pos)
-
+    @color = color
+    @board = board
+    @pos = pos
   end
 
   def present?
