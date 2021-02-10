@@ -9,3 +9,6 @@
 
 
 #create moves method
+
+
+#move_dirs should just raise an error in this module and should be overridden in a subclass
