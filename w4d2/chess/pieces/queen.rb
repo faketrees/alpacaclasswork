@@ -13,8 +13,12 @@ class Queen < Piece
     [0, -1]
   ]
 
-  def initialize
+  def symbol
+
+  end
+
+  private 
+  def move_dirs
     
   end
-  
 end

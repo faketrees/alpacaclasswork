@@ -15,7 +15,7 @@ class Piece
   end
 
   def to_s
-    
+    symbol.to_s
   end
 
   def empty?
@@ -27,7 +27,7 @@ class Piece
   end
 
   def symbol #may delete later
-
+    raise "You haven't created this yet"
   end
 
   private
