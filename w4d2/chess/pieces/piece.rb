@@ -1,3 +1,5 @@
+# require_relative "nullpiece"
+
 class Piece
 
   attr_accessor :pos
@@ -35,12 +37,4 @@ class Piece
 
 end
 
-class NullPiece
-  def present?
-    false
-  end
 
-  def to_s
-    "   "
-  end
-end
