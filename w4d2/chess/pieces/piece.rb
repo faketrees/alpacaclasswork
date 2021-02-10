@@ -2,6 +2,7 @@
 
 class Piece
 
+  attr_reader :color, :board
   attr_accessor :pos
 
   def initialize(color, board, pos)
@@ -19,7 +20,7 @@ class Piece
   end
 
   def empty?
-
+    false
   end
 
   def valid_moves

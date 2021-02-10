@@ -1,22 +1,18 @@
 require_relative 'piece.rb'
+require_relative 'slideable'
+
 
 class Bishop < Piece
 
-  MOVES = [
-    [1, 1],
-    [1, -1],
-    [-1, 1],
-    [-1, -1]
-  ]
-
+  include Slideable
 
   def symbol
-    ♗
-    ♝
+    "♗"
+    "♝"
   end
 
   private 
   def move_dirs
-    
+    diagnonal_dirs
   end
 end

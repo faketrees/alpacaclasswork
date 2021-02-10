@@ -1,5 +1,8 @@
 require "./pieces/piece"
 require "./pieces/nullpiece"
+require "./pieces/bishop"
+require "./pieces/queen"
+require "./pieces/rook"
 
 
 class Board
@@ -8,32 +11,32 @@ class Board
 
   #change 'piece' to respective pieces once we write each class
   STARTING_PIECES_WHITE = [
-    wrook1 = Piece.new("white", self, [0,0]),
+    wrook1 = Rook.new("white", self, [0,0]),
     wknight1 = Piece.new("white", self, [0,1]),
-    wbishop1 = Piece.new("white", self, [0,2]),
-    wqueen = Piece.new("white", self, [0,3]),
+    wbishop1 = Bishop.new("white", self, [0,2]),
+    wqueen = Queen.new("white", self, [0,3]),
     wking = Piece.new("white", self, [0,4]),
-    wbishop2 = Piece.new("white", self, [0,5]),
+    wbishop2 = Bishop.new("white", self, [0,5]),
     wknight2 = Piece.new("white", self, [0,6]),
-    wrook2 = Piece.new("white", self, [0,7]),
+    wrook2 = Rook.new("white", self, [0,7]),
   ]
   STARTING_PIECES_BLACK = [
-    brook1 = Piece.new("black", self, [7,0]),
-    bbishop1 = Piece.new("black", self, [7,1]),
+    brook1 = Rook.new("black", self, [7,0]),
+    bbishop1 = Bishop.new("black", self, [7,1]),
     bknight1 = Piece.new("black", self, [7,2]), 
-    bqueen = Piece.new("black", self, [7,3]),
+    bqueen = Queen.new("black", self, [7,3]),
     bking = Piece.new("black", self, [7,4]),
     bknight2 = Piece.new("black", self, [7,5]),
-    bbishop2 = Piece.new("black", self, [7,6]),
-    brook2 = Piece.new("black", self, [7,7]),
+    bbishop2 = Bishop.new("black", self, [7,6]),
+    brook2 = Rook.new("black", self, [7,7]),
   ]
 
   def initialize
     @grid = Array.new(8) { Array.new(8) { NullPiece.instance } }
-    fill_row(0, STARTING_PIECES_BLACK)
-    fill_row(7, STARTING_PIECES_WHITE)
-    fill_pawns(1, self, "black")
-    fill_pawns(6, self, "white")
+    fill_row(0, STARTING_PIECES_WHITE)
+    fill_row(7, STARTING_PIECES_BLACK)
+    # fill_pawns(1, self, "black")
+    # fill_pawns(6, self, "white")
 
   end
 
@@ -71,8 +74,9 @@ class Board
     else
       raise "There's no piece here. It must be a ghost. Spooky. "
     end
-    if valid_position?(end_pos)   
-        self[end_pos] = piece 
+    if valid_position?(end_pos) 
+        piece.pos = end_pos
+        self[end_pos] = piece
         self[start_pos] = NullPiece.instance
     else
       raise "You're trying to cheat. *flips table and board"

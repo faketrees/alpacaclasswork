@@ -12,3 +12,64 @@
 
 
 #move_dirs should just raise an error in this module and should be overridden in a subclass
+
+module Slideable
+    HORIZONTAL_DIRS = [
+        [1, 0],
+        [0, 1],
+        [-1, 0],
+        [0, -1]
+      ]
+    
+    DIAGONAL_DIRS = [
+        [1, 1],
+        [1, -1],
+        [-1, 1],
+        [-1, -1]
+      ]
+
+    def horizontal_dirs
+        HORIZONTAL_DIRS
+    end
+
+    def diagnonal_dirs
+        DIAGONAL_DIRS
+    end
+
+    def moves
+        all_moves = []
+
+        move_dirs.each do |move|
+            all_moves << grow_unblocked_moves_in_dir(move[0], move[1])
+        end
+
+        all_moves
+    end
+    
+    private
+    def move_dirs
+        raise "hell"
+    end
+
+    def grow_unblocked_moves_in_dir(dx, dy)
+        cx = pos[0] #integer
+        cy = pos[1] #integer
+        pos_copy = [cx, cy]
+
+        pos_moves = []
+
+        while board.valid_position?(pos_copy)
+            if board[cx, cy].empty?
+                cx += dx 
+                cy += dy 
+                # pos_moves << pos_copy
+                pos_moves << [cx, cy]
+            else
+                break
+            end
+        end
+
+        pos_moves
+    end
+
+end

@@ -1,25 +1,18 @@
 require_relative 'piece.rb'
+require_relative 'slideable'
+
 
 class Queen < Piece 
 
-  MOVES = [
-    [1, 1],
-    [1, -1],
-    [-1, 1],
-    [-1, -1],
-    [1, 0],
-    [0, 1],
-    [-1, 0],
-    [0, -1]
-  ]
+  include Slideable
 
   def symbol
-    ♛
-    ♕
+    "♛"
+    "♕"
   end
 
   private 
   def move_dirs
-    
+    horizontal_dirs + diagnonal_dirs
   end
 end

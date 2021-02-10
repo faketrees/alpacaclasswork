@@ -15,4 +15,7 @@ class NullPiece < Piece
         ' '
     end
 
+    def empty?
+        true
+    end
 end

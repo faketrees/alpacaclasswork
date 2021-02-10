@@ -1,13 +1,10 @@
 require_relative 'piece.rb'
+require_relative 'slideable'
+
 
 class Rook < Piece 
 
-  MOVES = [
-    [1, 0],
-    [0, 1],
-    [-1, 0],
-    [0, -1]
-  ]
+  include Slideable
 
   def symbol
     "♖"
@@ -16,6 +13,7 @@ class Rook < Piece
 
   private 
   def move_dirs
-    
+    horizontal_dirs
   end
+
 end
