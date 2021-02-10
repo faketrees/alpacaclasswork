@@ -28,7 +28,17 @@ class Board
 
 
   def move_piece(start_pos, end_pos) #will need to add color back eventually?
-    @grid[start_pos] = 
+    if @grid[start_pos] != NullPiece
+      piece = @grid[start_pos]
+    else
+      raise "There's no piece here. It must be a ghost. Spooky. "
+    end
+    if valid_position?(end_pos) 
+      @grid[start_pos] = NullPiece.instance
+      @grid[end_pos] = piece
+    else
+      raise "You're trying to cheat. *flips table and board"
+    end
 
 
   end
