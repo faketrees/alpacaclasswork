@@ -5,7 +5,9 @@ class NullPiece < Piece
 
     include Singleton
 
-    def initialize; end
+    def initialize
+        @empty = true
+    end
 
     def symbol
         ' '
@@ -16,6 +18,6 @@ class NullPiece < Piece
     end
 
     def empty?
-        true
+        @empty
     end
 end

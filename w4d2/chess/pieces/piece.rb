@@ -9,6 +9,7 @@ class Piece
     @color = color
     @board = board
     @pos = pos
+    @empty = false
   end
 
   def present?
@@ -20,7 +21,7 @@ class Piece
   end
 
   def empty?
-    false
+    @empty
   end
 
   def valid_moves

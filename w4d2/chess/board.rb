@@ -10,6 +10,7 @@ class Board
   attr_accessor :grid
 
   #change 'piece' to respective pieces once we write each class
+  #[0,0] - true [1,0]- true [2,0] - true ..[7,0] -true
   STARTING_PIECES_WHITE = [
     wrook1 = Rook.new("white", self, [0,0]),
     wknight1 = Piece.new("white", self, [0,1]),
@@ -139,7 +140,7 @@ class Board
 end
 
 
-# a = Board.new
+a = Board.new
 # p a
 
 # puts
@@ -148,3 +149,9 @@ end
 
 # a.move_piece([6,0], [5,0])
 # print a[[6, 0]]
+
+a.grid.each_with_index do |row, i1|
+    row.each_with_index do |col, i2|
+      puts "grid [#{i1}, #{i2}] :#{a.grid[i1, i2].empty?}"
+    end
+end
