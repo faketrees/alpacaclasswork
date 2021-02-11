@@ -10,8 +10,7 @@ class Board
 
   attr_accessor :grid
 
-  #change 'piece' to respective pieces once we write each class
-  #[0,0] - true [1,0]- true [2,0] - true ..[7,0] -true
+  #self in these arrays is called before board is initialized....has no reference
   STARTING_PIECES_WHITE = [
     wrook1 = Rook.new("white", self, [0,0]),
     wknight1 = Piece.new("white", self, [0,1]),
@@ -90,6 +89,7 @@ class Board
 
   end
 
+  
 
   def valid_position?(pos)
     #valid position is on the board AKA between 0 and 7

@@ -52,8 +52,8 @@ module Slideable
     end
 
     def grow_unblocked_moves_in_dir(dx, dy) #calling this on a piece. Self refers to a piece. 
-        cx = pos[0] #integer
-        cy = pos[1] #integer
+        cx = self.pos[0] #integer
+        cy = self.pos[1] #integer
         pos_copy = [cx, cy]
 
         # debugger
