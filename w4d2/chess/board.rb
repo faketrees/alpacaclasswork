@@ -4,6 +4,7 @@ require "./pieces/bishop"
 require "./pieces/queen"
 require "./pieces/rook"
 
+require 'byebug'
 
 class Board
 

@@ -51,22 +51,26 @@ module Slideable
         raise "hell"
     end
 
-    def grow_unblocked_moves_in_dir(dx, dy)
+    def grow_unblocked_moves_in_dir(dx, dy) #calling this on a piece. Self refers to a piece. 
         cx = pos[0] #integer
         cy = pos[1] #integer
         pos_copy = [cx, cy]
 
+        # debugger
+
         pos_moves = []
 
-        while board.valid_position?(pos_copy)
-            if board.empty?[pos_copy]
+        while board.valid_position?(pos_copy) #self.board.valid_position?()
+            if board.empty?(pos_copy)
                 cx += dx 
                 cy += dy 
                 # pos_moves << pos_copy
                 pos_moves << [cx, cy]
             else
                 raise "Dion"
+                break 
             end
+            break
         end
 
         pos_moves
