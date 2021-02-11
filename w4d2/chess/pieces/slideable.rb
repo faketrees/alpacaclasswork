@@ -59,13 +59,13 @@ module Slideable
         pos_moves = []
 
         while board.valid_position?(pos_copy)
-            if board[cx, cy].empty?
+            if board.empty?[pos_copy]
                 cx += dx 
                 cy += dy 
                 # pos_moves << pos_copy
                 pos_moves << [cx, cy]
             else
-                break
+                raise "Dion"
             end
         end
 

@@ -44,6 +44,7 @@ class Board
   def fill_row(row, color) #this method should be filling in a row of the grid
     @grid[row].each_with_index do |col, idx|
       @grid[row][idx] = color[idx]
+
     end
   end
 
@@ -67,6 +68,9 @@ class Board
     @grid[x][y] = value
   end
 
+  def empty?(pos)
+    self[pos].empty?
+  end
 
   def move_piece(start_pos, end_pos) #will need to add color back eventually?
     
@@ -140,18 +144,19 @@ class Board
 end
 
 
-a = Board.new
-# p a
+# a = Board.new
+# # p a
 
-# puts
-# puts "-" * 80
-# puts
+# # puts
+# # puts "-" * 80
+# # puts
 
-# a.move_piece([6,0], [5,0])
-# print a[[6, 0]]
+# # a.move_piece([6,0], [5,0])
+# # print a[[6, 0]]
 
-a.grid.each_with_index do |row, i1|
-    row.each_with_index do |col, i2|
-      puts "grid [#{i1}, #{i2}] :#{a.grid[i1, i2].empty?}"
-    end
-end
+# a.grid.each_with_index do |row, i1|
+#     row.each_with_index do |col, i2|
+      
+#       puts "grid [#{i1}, #{i2}] :#{a[[i1,i2]].empty?}"
+#     end
+# end
