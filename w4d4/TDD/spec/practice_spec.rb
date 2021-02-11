@@ -21,3 +21,27 @@ describe "#my_uniq" do
     end
 
 end
+
+#strategery
+    #test correct indices
+    #indicies are sorted dictionary wise
+    #what happens if there is no array or no sum
+    #test complicated combinations that do add up to zero
+    #test case [4, -5, 1, 3, 5, -1, -4, 9] => [[0,6], [1,4], [2,5]]
+    #test case [] => []
+    #[1,2,3,4,5] => []
+
+    describe "#two_sum" do 
+        it "should return the indices of all pairs whose sum is zero" do
+            expect(two_sum([4, -5, 1, 3, 5, -1, -4, 9])).to eq([[0,6], [1,4], [2,5]])
+        end
+
+        it "should return an empty array if array contains no elements" do
+            expect(two_sum([])).to eq([])
+        end
+
+        it "should expect empty array if no elements sum to 0" do
+            expect(two_sum([1,2,3,4,5])).to eq([])
+        end
+
+    end
