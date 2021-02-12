@@ -142,12 +142,16 @@ end
 
             it "needs to create a board of size 3 (3 posts)" do
                 expect(board.length).to eq(3)
+                expect(board[0].length).to eq(4)
             end
         end
 
         describe "#move" do
 
-            it "should call valid_move?"
+            it "should call valid_move?" do
+              expect(board.move).to receive(:valid_move?).at_least(:once)
+            end
+
 
             it "should take in a start post and an end post"
 
@@ -160,6 +164,13 @@ end
 
         end
 
+        describe "won?" do
+
+          it "should return true if post 3 has all disks in order" do
+
+          end
+
+        end
 
 
     end
