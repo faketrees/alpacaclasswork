@@ -24,3 +24,13 @@ def two_sum(array)
     end
     results
 end
+
+def my_transpose(array)
+  new_arr = Array.new(array.length) {Array.new(array.length)}
+  array.each_with_index do |_, idx1|
+    array.each_with_index do |_, idx2|
+      new_arr[idx2][idx1] = array[idx1][idx2] 
+    end
+  end
+  new_arr
+end

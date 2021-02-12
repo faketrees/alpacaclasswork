@@ -45,3 +45,28 @@ end
         end
 
     end
+
+    #transpose a 2d matrix - switching rows with columns
+    #should not call .transpose method
+    #it should my_transpose([
+    #[0, 1, 2],  --->  [[0, 3, 6],
+    #[3, 4, 5], --->  [0, 3, 6],
+    #[6, 7, 8]  ---> [2, 5, 8]]
+  
+    describe "#my_transpose" do
+      before(:each) do 
+        expect_any_instance_of(Array).not_to receive(:transpose)
+      end
+      it "will convert between row oriented and column oriented representations" do
+        expect(my_transpose([
+          [0, 1, 2],
+          [3, 4, 5],
+          [6, 7, 8]
+          ])).to eq([
+          [0, 3, 6],
+          [1, 4, 7],
+          [2, 5, 8]])
+      end
+    end
+
+    #Stock Picker [9, 3, 5, 6, 7, 3] -> [1,4] 
