@@ -25,6 +25,8 @@ def two_sum(array)
     results
 end
 
+
+
 def my_transpose(array)
   new_arr = Array.new(array.length) {Array.new(array.length)}
   array.each_with_index do |_, idx1|
@@ -33,4 +35,19 @@ def my_transpose(array)
     end
   end
   new_arr
+end
+
+
+
+#[9, 7, 3, 5, 6, 7, 3] => [1,4] length of 7
+def stock_picker(array)
+    #once we find the min, then we could do a .drop on the array
+    #find the max of the 'dropped array'
+    #make sure we record the indexes and add the min index to the index of the new dropped array
+    min = array.min
+    min_ind = array.index(min)
+    dropped = array.drop(min_ind + 1)
+    max = dropped.max
+    max_ind = dropped.index(max) + (min_ind + 1)
+    [min_ind, max_ind]
 end

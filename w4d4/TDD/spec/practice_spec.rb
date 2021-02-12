@@ -70,3 +70,107 @@ end
     end
 
     #Stock Picker [9, 3, 5, 6, 7, 3] -> [1,4] 
+
+    describe "#stock_picker" do 
+        it "will find the first lowest index and compare to next highest index" do 
+            expect(stock_picker([9, 3, 5, 6, 7, 3])).to eq([1,4])
+        end
+    end
+
+
+
+    #board class
+        #represent disks with a number
+
+        #determine if win or won?
+        #can't move more than one piece at a time
+        #methods needed
+            #initialize
+                #number of disks
+                    #disks are going to need a size represented by an integer
+                #board -number of posts
+            
+            #play 
+                #should call the move method
+            #move
+                #playturn?
+                #should call valid_move?
+
+                #get user input. do some bullshit
+                    #should get starting post and ending post
+                    #convert strings to integers where applicable
+                    #check if valid move
+                    #if move valid then make it happen
+                    #next turn
+                    #repeat until win?
+            #disks
+                #should return the total number of disks on that post
+                #
+            #render_board
+
+            #valid_move?
+                    #should raise an error if you try to move a larger disk onto a smaller disk
+                    #error to move piece off board
+                    #error if piece is not the top
+            #won?
+                #goes on till stack is full on 'other side' (post 3)
+                #if array[2] == array[0].dup.sort
+                    #duplicate starting array
+                    #board.last == starting_array_duplicate first stack. 
+                    
+            #move counter not necessary but interesting.... spoooky
+            #
+
+
+
+    
+# game.new(64)
+
+#board - [[1..4], [], []]
+    describe Board do 
+        subject(:board) { board = Board.new(4)}
+
+        describe "#initialize" do
+
+            it "should take in an integer as an argument for the number of disks" do
+                expect{Board.new(5)}.not_to raise_error
+            end
+
+            it "adds the correct number of disks to the stack and be in the correct order" do #getter/setter methods?
+                expect(board.disks[1]).to eq([4,3,2,1])
+            end
+
+            it "needs to create a board of size 3 (3 posts)" do
+                expect(board.length).to eq(3)
+            end
+        end
+
+        describe "#move" do
+
+            it "should call valid_move?"
+
+            it "should take in a start post and an end post"
+
+
+            it "should raise error if disk@pos is smaller than moved disk" do
+                expect{board.valid_move?}.to raise_error
+            end
+
+            it "should raise an error if you try to moe disk off the board"
+
+        end
+
+
+
+    end
+
+
+#[[4,3,2,1], [], []]    
+
+# [1], [ ], [ ]
+# [2], [ ], [ ]
+# [3], [ ], [ ]
+# [4], [ ], [ ]
+
+#boad[1][4] ->[2][3]
+#post number
