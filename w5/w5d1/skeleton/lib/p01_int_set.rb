@@ -63,6 +63,7 @@ end
 
 class ResizingIntSet
   attr_reader :count
+  attr_writer :count
 
   def initialize(num_buckets = 20)
     @store = Array.new(num_buckets) { Array.new }
@@ -70,6 +71,9 @@ class ResizingIntSet
   end
 
   def insert(num)
+    @store.resize! if num_buckets <= count
+    @store[num % num_buckets] << num
+    self.count += 1
   end
 
   def remove(num)
@@ -89,5 +93,11 @@ class ResizingIntSet
   end
 
   def resize!
+    new_arr = Array.new(count) {Array.new}
+    @store.flatten.each do |num|
+      new_arr[num % count] << num
+    end
+    num_buckets = count
   end
+
 end
