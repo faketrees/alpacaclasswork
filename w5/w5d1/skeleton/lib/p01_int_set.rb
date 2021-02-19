@@ -81,6 +81,12 @@ class ResizingIntSet
   end
 
   def remove(num)
+    @store.each do |subarray|
+      if subarray.include?(num)
+        subarray.delete(num)
+        self.count -= 1
+      end
+    end
   end
 
   def include?(num)
@@ -98,7 +104,7 @@ class ResizingIntSet
     @store.length
   end
 
-  def resize!
+  def resize! #n^2
     new_arr = Array.new(num_buckets * 2) {Array.new}
     new_buckets = num_buckets * 2
     @store.flatten!.each do |num|
