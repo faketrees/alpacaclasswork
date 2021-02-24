@@ -59,11 +59,11 @@ def richer_than_england
       countries
     WHERE
       continent = 'Europe' AND gdp/population > (SELECT
-                                        gdp/population
-                                      FROM
-                                        countries
-                                      WHERE
-                                        name = 'United Kingdom'
+                                                    gdp/population
+                                                  FROM
+                                                    countries
+                                                  WHERE
+                                                    name = 'United Kingdom'
 
       )
   SQL

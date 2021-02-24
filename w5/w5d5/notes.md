@@ -11,7 +11,7 @@ where.not
 User.where(email: "foo@bar.com")
 User.where("email = 'foo@bar.com'") -most vulnerable to sql injection because it passes the whole string
 
-User.where("email = (?)", "foo@bar.com)
+User.where("email = (?)", "foo@bar.com")
 User.where("email = :youremail", yourmail: "foo@bar.com")
 
 
@@ -74,3 +74,6 @@ Joins creates a single query
 
 
 saving it to a variable is like precaching a query
+
+
+.joins( name of the association not the table)
