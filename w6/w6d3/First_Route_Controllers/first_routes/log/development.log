@@ -764,3 +764,87 @@ Unpermitted parameter: :id
 Completed 422 Unprocessable Entity in 24ms (Views: 0.6ms | ActiveRecord: 3.4ms)
 
 
+Started GET "/users/1" for ::1 at 2021-02-24 17:06:33 -0800
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/michaellyons/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.5/lib/active_record/log_subscriber.rb:98
+  
+SyntaxError (/Users/michaellyons/Documents/alpacaclasswork/w6/w6d3/First_Route_Controllers/first_routes/app/controllers/users_controller.rb:21: syntax error, unexpected ':', expecting ')'
+...       user = User.find_by(:id: params[:id])
+...                              ^
+/Users/michaellyons/Documents/alpacaclasswork/w6/w6d3/First_Route_Controllers/first_routes/app/controllers/users_controller.rb:21: syntax error, unexpected ')', expecting keyword_end
+... User.find_by(:id: params[:id])
+...                              ^):
+  
+app/controllers/users_controller.rb:21: syntax error, unexpected ':', expecting ')'
+app/controllers/users_controller.rb:21: syntax error, unexpected ')', expecting keyword_end
+Started GET "/users/1" for ::1 at 2021-02-24 17:06:52 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/2" for ::1 at 2021-02-24 17:07:10 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+Completed 200 OK in 20ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/users/1" for ::1 at 2021-02-24 17:09:09 -0800
+Processing by UsersController#update as */*
+  Parameters: {"email"=>"stuff@fake_trees.com", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+Completed 400 Bad Request in 10ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:38:in `user_params'
+app/controllers/users_controller.rb:27:in `update'
+Started PATCH "/users/1" for ::1 at 2021-02-24 17:09:33 -0800
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"email"=>"stuff@fake_trees.com"}, "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:27
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "email" = ? WHERE "users"."id" = ?[0m  [["email", "stuff@fake_trees.com"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:27
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users" for ::1 at 2021-02-24 17:10:31 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5
+Completed 200 OK in 9ms (Views: 4.7ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/users/5" for ::1 at 2021-02-24 17:10:44 -0800
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:35
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:36
+  [1m[36mUser Destroy (1.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/users_controller.rb:36
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:36
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/users" for ::1 at 2021-02-24 17:10:55 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms)
+
+
